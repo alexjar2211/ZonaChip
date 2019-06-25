@@ -3,22 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Producto;
 
 class HomeController extends Controller
 {
 	public function index(){
-		return view('home.index');
+		$nroProductos = $this->obtenerCantidadProductos();
+		return view('home.index', compact('nroProductos'));
 	}	
-
+	
 	public function contacto(){
-		return view('home.contacto');
+		session()->forget('nombreUsuario');
+		session()->forget('idUsuario');
+		$nroProductos = $this->obtenerCantidadProductos();
+		return view('home.contacto', compact('nroProductos'));
 	}
 
-	public function vestidos(){
-		return view('home.vestidos');
-	}
+	private function obtenerCantidadProductos(){
+		$nroProductos = 0;
 
-	public function marcas(){
-		return view('home.marcas');
+		if(session('nroProductos') == null){
+			session(['nroProductos' => $nroProductos]);
+		}
+		else{
+			$nroProductos = session('nroProductos');
+		}
+
+		return $nroProductos;
 	}
 }

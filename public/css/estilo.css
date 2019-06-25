@@ -1,0 +1,146 @@
+.file {
+  visibility: hidden;
+}
+
+h1 {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0 0 5rem 0;
+  background: -webkit-linear-gradient(#fff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.btn.btn-primary {
+  background-color:#ff4081;
+  border-color:#ff4081;
+  outline: none;
+  color: #fff;
+}
+
+.photo-container{
+	border: 1px dashed #ff4081;
+	border-radius: 10px;
+	width: 400px;
+	min-height: 350px;
+	padding: 25px 25px 45px 25px;
+	cursor: pointer;
+	overflow: hidden;
+	position: relative;
+}
+
+.photo-upload-btn{
+	height: auto;
+	padding: 7px 40px;
+	background: #ff4081;
+	color: #fff;
+	border-radius: 25px;
+	margin: 0 auto;
+	display:block;
+	display: none;
+}
+
+.delete-photo{
+	display:block;
+	text-align: center;
+	margin: 0 auto;
+	position: absolute;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	cursor: pointer;
+	color: #ff4081;
+	font-size: 1rem;
+	z-index: 100;
+	display: none;
+}
+
+.select-upload {
+	width: 100%;
+	padding: 10px 6px !important;
+	border: 1px solid #ff4081;
+	color: #2b2b2b;
+	outline: none;
+}
+
+.txt-upload{
+	border: 1px solid #ff4081 !important;
+	display: block !important;
+	width: 100% auto;
+	height: auto !important;
+	font-size: 1rem !important;
+	color: #000 !important;	
+}
+
+#containerReview{
+	display: none;
+}
+
+#btnComprar{
+	display: block;
+}
+
+.wrap-img{
+	width:100px;
+	height: 100px;
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+.wrap-img img{
+	margin-top: -20%;
+	display: block;
+}
+
+.container-photo-detail-cart{
+	border: 1px solid rgba(204, 204, 204, 0.562);
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 20px;
+}
+
+.container-description-photo {
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
+}
+
+.price-design::before{
+	content: '$';
+}
+
+.quantity-design{
+	color: rgb(136, 136, 136);
+	width: 40px;
+	padding: 0;
+	margin-right: 15px;
+	border: 1px solid rgb(136, 136, 136) !important;
+	font-size: 1rem;
+	height: auto;
+}
+
+.btnNumberQuantity{
+	width: 25px;
+	height: 25px;
+	font-weight: 600;
+}
+
+.inputNumberQuantity{
+	width: 40px;
+	height: 25px;
+	font-size: 1rem;
+}
+
+.container-price{
+	display: flex;
+	align-items: center
+}
+
+.container-price .price-design{
+	font-size: 1.2rem;
+	font-weight: 600;
+}

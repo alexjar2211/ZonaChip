@@ -9,5 +9,7 @@ class Factura extends Model
 	protected $listaProductos;
 	protected $subtotal;
 	protected $iva;
-	protected $totalCompra;
+	protected $descuento;
+	protected $total;
+	protected $envio;
 }
