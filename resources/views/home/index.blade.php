@@ -8,6 +8,16 @@
 	.block2-price:before {
 		content: '$'
 	}
+
+	.btn-comprar{
+		border-radius: 30px;
+		background: #000;
+		color: #fff;
+	}
+
+	.btn-comprar:hover{
+		background: #ea427f
+	}
 </style>
 @endsection
 
@@ -27,8 +37,7 @@
 					</h2>
 
 					<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
-						<!-- Button -->
-						<a href="{{ url('/productos') }}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+						<a href="{{ url('/camisetas') }}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 							Conseguir
 						</a>
 					</div>
@@ -47,7 +56,7 @@
 
 					<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
 						<!-- Button -->
-						<a href="product.php" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+						<a href="{{ asset('/vestidos') }}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 							Conseguir
 						</a>
 					</div>
@@ -66,7 +75,7 @@
 
 					<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
 						<!-- Button -->
-						<a href="product.php" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+						<a href="{{ asset('kid') }}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 							Conseguir
 						</a>
 					</div>
@@ -83,24 +92,24 @@
 			<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
 				<!-- block1 -->
 				<div class="block1 hov-img-zoom pos-relative m-b-30">
-					<img src="images/banner-02.jpg" alt="IMG-BENNER">
+					<img src="{{ asset('productos/1.jpg') }}" alt="IMG-BENNER">
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-							....
+						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+							Comprar
 						</a>
 					</div>
 				</div>
 
 				<!-- block1 -->
 				<div class="block1 hov-img-zoom pos-relative m-b-30">
-					<img src="images/banner-05.jpg" alt="IMG-BENNER">
+					<img src="{{ asset('productos/3.jpg') }}" alt="IMG-BENNER">
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-							.....
+						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+							Comprar
 						</a>
 					</div>
 				</div>
@@ -113,8 +122,8 @@
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-							....
+						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+							Comprar
 						</a>
 					</div>
 				</div>
@@ -125,8 +134,8 @@
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-							....
+						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+							Comprar
 						</a>
 					</div>
 				</div>
@@ -135,12 +144,12 @@
 			<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
 				<!-- block1 -->
 				<div class="block1 hov-img-zoom pos-relative m-b-30">
-					<img src="images/banner-04.jpg" alt="IMG-BENNER">
+					<img src="{{ asset('productos/2.jpg') }}" alt="IMG-BENNER">
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-							....
+						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+							Comprar
 						</a>
 					</div>
 				</div>
@@ -155,12 +164,12 @@
 						</h4>
 
 						<p class="t-center w-size4">
-							grandes ofertas y ropa exclusiva
+							Grandes ofertas y ropa exclusiva
 						</p>
 
 						<div class="w-size2 p-t-25">
 							<!-- Button -->
-							<a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+							<a href="{{ asset('/kid') }}" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
 								VER
 							</a>
 						</div>

@@ -28,6 +28,53 @@
 	<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 	<script src="{{asset('js/instafeed.min.js')}}"></script>
 	@show
+
+	<style>
+		.user-option-container {
+			display: flex;
+			flex-direction: column;
+			position: absolute;
+			top: 38px;
+			left: 0;
+			background: #fff;
+			color: #6b6b6b;
+			width: 75%;
+			text-align: end;
+			padding: 10px;
+			box-shadow: 0px 0px 4px rgba(0,0,0,.1);
+			/* border-radius: 5px; */
+		}
+
+		.user-option-container:before{
+			content: '';
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: -16px;
+			right: 12px;
+			border-right: 7px solid transparent;
+			border-left: 7px solid transparent;
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid #fff;
+		}
+
+		.user-option-container a{
+			padding: 4px 10px;
+			cursor: pointer;
+			font-size: .9rem;
+			text-decoration: none;
+			color: #000;
+		}
+
+		.user-option-container a:hover{
+			color: #229dc1;
+		}
+
+		.hidden{
+			display: none;
+		}
+		
+	</style>
 </head>
 
 <body class="animsition">
@@ -56,7 +103,7 @@
 			<div class="wrap_header">
 				<!-- Logo -->
 				<div class="logo_menu" style="width: auto">
-					<a href="index.php" class="logo">
+					<a href="{{ url('/') }}" class="logo">
 						<img src="images/zona.png" alt="zona chic">
 					</a>
 					<!-- Menu -->
@@ -68,7 +115,7 @@
 								</li>
 
 								<li>
-									<a href="#">Diseño <span class="fa fa-angle-down"></span></a>
+									<a href="">Diseño <span class="fa fa-angle-down"></span></a>
 									<ul class="sub_menu">
 										<li><a href="{{url('/vestidos')}}">Vestidos</a></li>
 										<li><a href="{{url('/camisetas')}}">Camisetas</a></li>
@@ -100,12 +147,22 @@
 
 				<!-- Header Icon -->
 				<div class="header-icons">
-					@if(session('nombreUsuario'))
+					<div style="display: flex;" id="iconUser">
+						@if(session('nombreUsuario'))
 						<p style="color: #fff; padding-right: 10px">Bienvenido! {{ session('nombreUsuario') }} </p>
-					@endif
-					<a href="{{ session('nombreUsuario') ? url('miperfil') : url('/login')}}" class="header-wrapicon1 dis-block">
-						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-					</a>
+						@endif
+						<a href="{{ session('nombreUsuario') ? url('miperfil') : url('/login')}}"
+							class="header-wrapicon1 dis-block perfil">
+							<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+						</a>
+
+						@if(session('idUsuario') != null)
+						<div class="user-option-container hidden">
+							<a href="{{ url('mi-perfil') }}">Mi Perfil</a>
+							<a href="{{ url('logout') }}">Cerrar Sesion</a>
+						</div>
+						@endif
+					</div>
 
 					<span class="linedivide1"></span>
 
@@ -195,7 +252,7 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="#">Marcas</a>
+						<a href="">Marcas</a>
 						<ul class="sub-menu">
 							<li><a href="kids.php">Zona kids</a></li>
 							<li><a href="gym.php">Zona gym</a></li>
@@ -387,7 +444,13 @@
 
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
+	<script>
+		$("#iconUser").hover(function(e){
+			$(".user-option-container").removeClass('hidden');
+		}, function(e){
+			$(".user-option-container").addClass('hidden');
+		});
+	</script>
 	@show
 </body>
 

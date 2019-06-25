@@ -29,3 +29,4 @@ Route::post('/carrito/comprar', 'CarritoController@registrarCompra');
 Route::get('/login', 'UserController@index');
 Route::post('/login', 'UserController@login');
 Route::post('/registrarse', 'UserController@registrarse');
+Route::get('/logout', 'UserController@logout');

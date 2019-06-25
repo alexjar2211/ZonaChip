@@ -146,9 +146,16 @@
 			</div>
 
 			<div class="size15 trans-0-4">
+				@if(session('idUsuario')!= null)
 				<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" id="btnComprar">
 					Proceder a comprar
 				</button>
+
+				@else
+				<a href="{{ url('login') }}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" style="color: #fff;cursor:pointer">
+					Iniciar Sesion
+				</a>
+				@endif
 			</div>
 		</div>
 		@endif
@@ -158,7 +165,6 @@
 <section class="container-fluid contenedor-resultado-compra" >
 	<div class="row resultado-compra">
 		<p class="titulo-post-compra">
-			<span></span>
 			<span>Compra registrada</span>
 		</p>
 

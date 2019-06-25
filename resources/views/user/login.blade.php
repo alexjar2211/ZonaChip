@@ -1,5 +1,40 @@
 @extends('layout')
 @section('titulo', 'Login')
+
+@section('estilos')
+	@parent
+	<style>
+		body{
+			background: #fff;
+		}
+
+		h1{
+			color: #000;
+			font-size: 1.6rem;
+			font-weight: 300;
+		}
+
+		.form{
+			border: 1px solid #FF4081;
+			border-radius: 10px;
+		}
+		
+		.field-wrap label{
+			color: #000;
+		}
+
+		.field-wrap input{
+			color: #000;
+		}
+
+		.inputText, {
+			color: #000 !important;
+		}
+
+	</style>
+
+@endsection
+
 @section('contenido')
 <!-- content page -->
 <div class="form">
@@ -54,14 +89,14 @@
 					<label>
 						Correo electronico<span class="req">*</span>
 					</label>
-					<input name="correo" style="border: 1px solid #eef0f0;" type="email" required autocomplete="off" />
+					<input class="inputText" name="correo" style="border: 1px solid #eef0f0;" type="email" required autocomplete="off" />
 				</div>
 				<input name="_token" type="hidden" value="{{ csrf_token() }}">
 				<div class="field-wrap">
 					<label>
 						Contraseña<span class="req">*</span>
 					</label>
-					<input name="password" style="border: 1px solid #eef0f0;" type="password" required autocomplete="off" />
+					<input class="inputText" name="password" style="border: 1px solid #eef0f0;" type="password" required autocomplete="off" />
 				</div>
 
 				<p class="forgot"><a href="#">Olvidaste tu contraseña?</a></p>

@@ -86,4 +86,11 @@ class UserController extends Controller
 
 		return "USUARIO CREDO";
 	}
+
+	public function logout(){
+		session()->forget('idUsuario');
+		session()->forget('nombreUsuario');
+
+		return redirect()->action('HomeController@index');
+	}
 }
