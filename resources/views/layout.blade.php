@@ -42,6 +42,7 @@
 			text-align: end;
 			padding: 10px;
 			box-shadow: 0px 0px 4px rgba(0,0,0,.1);
+			z-index: 5000;
 			/* border-radius: 5px; */
 		}
 
@@ -56,14 +57,18 @@
 			border-left: 7px solid transparent;
 			border-top: 10px solid transparent;
 			border-bottom: 10px solid #fff;
+			z-index: 100;
 		}
 
 		.user-option-container a{
 			padding: 4px 10px;
 			cursor: pointer;
-			font-size: .9rem;
+			font-size: 1rem;
 			text-decoration: none;
 			color: #000;
+			font-family: Montserrat-Regular;
+			font-weight: 600;
+			
 		}
 
 		.user-option-container a:hover{
@@ -146,22 +151,30 @@
 				</div>
 
 				<!-- Header Icon -->
-				<div class="header-icons">
+				<div class="header-icons" style="z-index: 1500">
 					<div style="display: flex;" id="iconUser">
 						@if(session('nombreUsuario'))
 						<p style="color: #fff; padding-right: 10px">Bienvenido! {{ session('nombreUsuario') }} </p>
 						@endif
+
 						<a href="{{ session('nombreUsuario') ? url('miperfil') : url('/login')}}"
 							class="header-wrapicon1 dis-block perfil">
 							<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 						</a>
-
+						{{-- <ul class="main_menu">
+							<li>
+								<ul class="sub_menu">
+									<li>Mi Perfil</li>
+									<li>Cerrar Sesion</li>
+								</ul>
+							</li>
+						</ul> --}}
 						@if(session('idUsuario') != null)
 						<div class="user-option-container hidden">
 							<a href="{{ url('mi-perfil') }}">Mi Perfil</a>
 							<a href="{{ url('logout') }}">Cerrar Sesion</a>
 						</div>
-						@endif
+						@endif 
 					</div>
 
 					<span class="linedivide1"></span>

@@ -30,10 +30,9 @@ class CarritoController extends Controller
 				$total = $total + ($prod['precio'] * $prod['cantidad']);
 			}
 
-			if(session('descuento') == null){
+			if (session('descuento') == null) {
 				$descuento = 0;
-			}
-			else{
+			} else {
 				$descuento = session('descuento');
 			}
 
@@ -41,7 +40,6 @@ class CarritoController extends Controller
 			$factura->envio = 15;
 			$factura->listaProductos = $listaProductos;
 			$factura->descuento = $descuento;
-
 		} else {
 			$factura->subtotal = 0;
 			$factura->envio = 0;
@@ -68,6 +66,7 @@ class CarritoController extends Controller
 		$listaProductos = array();
 
 		// session()->forget("productos");
+		// session()->forget("nroProductos");
 
 		if (session('productos') == null) {
 			session(['productos' => $listaProductos]);
@@ -100,7 +99,25 @@ class CarritoController extends Controller
 		session(['productos' => $listaProductos]);
 		$nroProductos = $this->contarProductos();
 
+		if (isset($input['section'])) {
+			$this->subirImagen($input);
+			return redirect()->action('CarritoController@index');
+		}
+
 		return json_encode($nroProductos);
+	}
+
+	private function subirImagen($input)
+	{
+		$image = $_FILES['img-diseño']['name'];
+		$imageArr = explode('.', $image); 
+		$newImageName = session('idUsuario') . '_' . $input['id'] . '_' . date('YmdHis') . '.' . $imageArr[1];
+		$uploadPath = "../public/wp-content/tmp/" . $newImageName;
+		$isUploaded = move_uploaded_file($_FILES["img-diseño"]["tmp_name"], $uploadPath);
+		if ($isUploaded)
+			echo 'successfully file uploaded';
+		else
+			echo 'something went wrong';
 	}
 
 	public function removeProductCart(Request $request)
@@ -117,7 +134,7 @@ class CarritoController extends Controller
 			$listaProductos = session('productos');
 		}
 
-		$indexProduct =  $this->verificarProductoExistente($productId, $listaProductos);
+		$indexProduct = $this->verificarProductoExistente($productId, $listaProductos);
 		unset($listaProductos[$indexProduct]);
 		session(['productos' => $listaProductos]);
 		$nroProductos = $this->contarProductos();
@@ -164,45 +181,48 @@ class CarritoController extends Controller
 	public function registrarCompra()
 	{
 
-			$listaProductos = [];
-			$factura = new Factura();
-			$total = 0;
-			
-			if (session('productos') == null) {
-				session(['productos' => $listaProductos]);
-			} else {
-				$listaProductos = session('productos');
-			}
-	
-			foreach ($listaProductos as $prod) {
-				$total = $total + ($prod['precio'] * $prod['cantidad']);
-			}
-	
-			$factura->subtotal = $total;
-			$factura->envio = 15;
-			$factura->listaProductos = $listaProductos;
-			$factura->iva = $factura->subtotal * 0.12;
-			$factura->total = $factura->subtotal + $factura->iva + $factura->envio;
-	
-			$idUsuario = session('idUsuario');
-	
-			$resultado = DB::select(
-				'CALL sp_registrar_venta(?,?,?,?,?,?)',
-				array($idUsuario, $factura->subtotal, $factura->descuento, $factura->iva, $factura->total, $factura->envio)
+		$listaProductos = [];
+		$factura = new Factura();
+		$total = 0;
+
+		if (session('productos') == null) {
+			session(['productos' => $listaProductos]);
+		} else {
+			$listaProductos = session('productos');
+		}
+
+		foreach ($listaProductos as $prod) {
+			$total = $total + ($prod['precio'] * $prod['cantidad']);
+		}
+
+		$factura->subtotal = $total;
+		$factura->envio = 15;
+		$factura->listaProductos = $listaProductos;
+		$factura->iva = $factura->subtotal * 0.12;
+		$factura->total = $factura->subtotal + $factura->iva + $factura->envio;
+
+		$idUsuario = session('idUsuario');
+
+		$resultado = DB::select(
+			'CALL sp_registrar_venta(?,?,?,?,?,?)',
+			array($idUsuario, $factura->subtotal, $factura->descuento, $factura->iva, $factura->total, $factura->envio)
+		);
+
+		$idVenta = $resultado[0]->idVenta;
+
+		foreach ($factura->listaProductos as $prod) {
+			DB::select(
+				'CALL sp_registrar_detalle_venta(?,?,?,?,?)',
+				array(
+					$idVenta, $prod->id, $prod->cantidad, $prod->precio, $prod->precio * $prod->cantidad
+				)
 			);
-	
-			$idVenta = $resultado[0]->idVenta;
-	
-			foreach($factura->listaProductos as $prod){
-				DB::select('CALL sp_registrar_detalle_venta(?,?,?,?,?)', 
-				array($idVenta, $prod->id, $prod->cantidad, $prod->precio, $prod->precio * $prod->cantidad));
-			}
-	
-			session()->forget('productos');
-			session()->forget('nroProductos');
-		
+		}
+
+		session()->forget('productos');
+		session()->forget('nroProductos');
+
 
 		return json_encode($idVenta);
-
 	}
 }
