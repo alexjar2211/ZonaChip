@@ -121,7 +121,7 @@
 	$(document).ready(function(e){
 			$('#btnComprar').click(function(e){
 				const precio = parseFloat($('#precio-inicial').val());
-				const cantidad = parseFloat($('.inputNumberQuantity').val());
+				const cantidad = parseInt($('.inputNumberQuantity').val());
 				const productId = parseInt($("#productId").val());
 				const nombre = $(".nombre-design").text();
 

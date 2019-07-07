@@ -27,7 +27,7 @@ class CarritoController extends Controller
 
 		if (count($listaProductos) != 0) {
 			foreach ($listaProductos as $prod) {
-				$total = $total + ($prod['precio'] * $prod['cantidad']);
+				$total = $total + ( $prod['precio'] * $prod['cantidad']);
 			}
 
 			if (session('descuento') == null) {
@@ -113,6 +113,7 @@ class CarritoController extends Controller
 		$imageArr = explode('.', $image); 
 		$newImageName = session('idUsuario') . '_' . $input['id'] . '_' . date('YmdHis') . '.' . $imageArr[1];
 		$uploadPath = "../public/wp-content/tmp/" . $newImageName;
+		
 		$isUploaded = move_uploaded_file($_FILES["img-diseño"]["tmp_name"], $uploadPath);
 		if ($isUploaded)
 			echo 'successfully file uploaded';
@@ -221,7 +222,6 @@ class CarritoController extends Controller
 
 		session()->forget('productos');
 		session()->forget('nroProductos');
-
 
 		return json_encode($idVenta);
 	}

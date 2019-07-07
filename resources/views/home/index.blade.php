@@ -9,13 +9,14 @@
 		content: '$'
 	}
 
-	.btn-comprar{
+	.btn-comprar {
 		border-radius: 30px;
 		background: #000;
-		color: #fff;
+		color: #fff !important;
+		cursor: pointer;
 	}
 
-	.btn-comprar:hover{
+	.btn-comprar:hover {
 		background: #ea427f
 	}
 </style>
@@ -96,7 +97,7 @@
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+						<a class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
 							Comprar
 						</a>
 					</div>
@@ -108,7 +109,7 @@
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+						<a class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
 							Comprar
 						</a>
 					</div>
@@ -122,7 +123,7 @@
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+						<a class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
 							Comprar
 						</a>
 					</div>
@@ -134,7 +135,7 @@
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+						<a class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
 							Comprar
 						</a>
 					</div>
@@ -148,7 +149,7 @@
 
 					<div class="block1-wrapbtn w-size2">
 						<!-- Button -->
-						<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
+						<a class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 btn-comprar">
 							Comprar
 						</a>
 					</div>
@@ -434,14 +435,56 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </section>
 
+<section class="instagram p-t-20">
+	<div class="sec-title p-b-52 p-l-15 p-r-15">
+		<h3 class="m-text5 t-center">
+			@Síguenos en Instagram
+		</h3>
+	</div>
+
+	<div class="flex-w">
+		<!-- Block4 -->
+		<span id="instafeed">
+		</span>
+	</div>
+
+</section>
+
 @section('scripts')
-	@parent
-	<script>
-		$(document).ready(function(e){
+@parent
+<script>
+	var userFeed = new Instafeed({
+	clientId: '03a7af0947fc45dd82a78fb3409adafc',
+   userId: '4263917923',
+	accessToken: '4263917923.1677ed0.418c46659cbc4d5b970510aeb168af0c',
+	get: 'user',
+	limit: '15',
+	sortBy: 'most-recent',
+   resolution: 'standard_resolution',
+	template: `<div class="block4 wrap-pic-w">
+						<img src="@{{image}}" alt="IMG-INSTAGRAM">
+						<a href="@{{link}}" class="block4-overlay sizefull ab-t-l trans-0-4">
+							<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+								<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i> 
+								<span class="p-t-2">@{{likes}} </span>
+							</span> 
+							<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+								<p class="s-text10 m-b-15 h-size1 of-hidden">@{{caption}} </p> 
+								<span class="s-text9"> Photo by chifa.mr.wok </span>
+							</div>
+						</a>
+					</div>`
+
+	});
+	userFeed.run();
+</script>
+
+
+<script>
+	$(document).ready(function(e){
 			$('.btnComprar').click(function(e){
 				const productContainer = $(this).parent().parent().parent().parent();
 				let precio = productContainer.children('.block2-txt').children('.block2-price').text().trim();
@@ -474,7 +517,7 @@
 				});
 			})
 		})
-	</script>
+</script>
 @endsection
 
 @endsection

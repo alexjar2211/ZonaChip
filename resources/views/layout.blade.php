@@ -445,16 +445,6 @@
 	<script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
 	<!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
-	<script type="text/javascript">
-		$('.block2-btn-addcart').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.block2-name').php();
-			$(this).on('click', function(){
-				swal(nameProduct, "se agrego al carrito !", "success");
-			});
-		});
-
-	</script>
-
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 	<script>
