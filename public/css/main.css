@@ -1653,7 +1653,7 @@ li.sale-noti > a {
 /*[ Block2 ]
 ///////////////////////////////////////////////////////////
 */
-.block2-labelsale::before,
+/* .block2-labelsale::before,
 .block2-labelnew::before 
 {
   z-index: 100;
@@ -1683,7 +1683,7 @@ li.sale-noti > a {
 .block2-labelnew::before {
   background-color: #66a8a6;
   content: 'New';
-}
+} */
 
 /* ------------------------------------ */
 .block2-overlay {
@@ -1709,7 +1709,7 @@ li.sale-noti > a {
 }
 
 /* ------------------------------------ */
-.block2-btn-towishlist,
+/* .block2-btn-towishlist,
 .block2-btn-addwishlist {
   display: block;
   position: absolute;
@@ -1732,15 +1732,15 @@ li.sale-noti > a {
 .block2-btn-addwishlist .icon-wishlist,
 .block2-btn-towishlist .icon-wishlist {
   line-height: 0;
-}
+} */
 
-.block2-btn-addwishlist:hover .icon_heart_alt {
+/* .block2-btn-addwishlist:hover .icon_heart_alt {
   display: none;
 }
 
 .block2-btn-addwishlist:hover .icon_heart {
   display: block;
-}
+} */
 
 /* ------------------------------------ */
 .block2-btn-towishlist .icon_heart_alt {

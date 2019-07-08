@@ -192,7 +192,7 @@
 		<!-- Header Mobile -->
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
-			<a href="index.php" class="logo-mobile">
+			<a href="{{ url('/') }}" class="logo-mobile">
 				<img src="images/zona.png" alt="zona chic">
 			</a>
 
